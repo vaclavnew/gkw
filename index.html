@@ -30,15 +30,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 24px;
+            padding: 48px 24px;
             text-align: center;
         }
 
         .container {
-            max-width: 480px;
+            max-width: 620px;
             width: 100%;
         }
 
@@ -65,6 +65,139 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 40px;
             line-height: 1.6;
+        }
+
+        .story-image {
+            float: left;
+            width: 140px;
+            margin: 4px 20px 12px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .story-content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .videos-section {
+            margin-bottom: 48px;
+        }
+
+        .videos-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+
+        .videos-container {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .video-wrapper {
+            width: 180px;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            .videos-container {
+                gap: 12px;
+            }
+
+            .video-wrapper {
+                width: 140px;
+                height: 249px;
+            }
+        }
+
+        .story-section {
+            margin-bottom: 48px;
+            text-align: left;
+        }
+
+        .story-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.8);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 auto;
+        }
+
+        .story-toggle:hover {
+            border-color: rgba(255,255,255,0.4);
+            color: white;
+        }
+
+        .story-toggle .arrow {
+            transition: transform 0.3s;
+        }
+
+        .story-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .story-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 8px;
+        }
+
+        .story-content.open {
+            max-height: 1000px;
+            padding: 24px 8px;
+        }
+
+        .story-content p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .story-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-content .highlight {
+            color: rgba(255,255,255,0.95);
+            font-weight: 500;
         }
 
         .form-title {
@@ -266,6 +399,40 @@
         <p class="tagline">Coming Soon</p>
         <p class="description">A fast physical game of reaction and control. Grab it, keep it, win it.</p>
 
+        <div class="videos-section">
+            <p class="videos-title">See it in action</p>
+            <div class="videos-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/xkC_Jy3jaMU?rel=0&modestbranding=1" title="GrabKeepWin Demo 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/zkByQ89NFTc?rel=0&modestbranding=1" title="GrabKeepWin Demo 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/N0hXGflERm8?rel=0&modestbranding=1" title="GrabKeepWin Demo 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-section">
+            <button class="story-toggle" onclick="toggleStory()">
+                <span>Our Story</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="story-content" id="story-content">
+                <div class="story-image">
+                    <img src="GKW1.png" alt="Grab Keep Win game">
+                </div>
+                <p class="highlight">A simple game about focus and respect.</p>
+                <p>Grab Keep Win was not created as a sport and not as a competition for dominance. It started as a small idea: a simple game where the most important thing is not winning, but how you play.</p>
+                <p>In a world where people rush to prove something, this game offers a different direction. Slow down. Stay present. See the other player not as an enemy, but as a partner inside the same moment.</p>
+                <p>The rules are minimal. The moves are simple. And that simplicity is the point. It reveals control, awareness, and respect.</p>
+                <p>Grab Keep Win is not about raw strength. It is about balance between tension and calm. About holding without breaking. About movement that does not create aggression, but trains self-control.</p>
+                <p>You can play it almost anywhere, as long as you do not disturb others. Not to crush someone. Not to show off. But to sharpen focus, to enjoy the process, and to leave the game with a clear head.</p>
+                <p class="highlight">Simple to start. Hard to master. And surprisingly real.</p>
+            </div>
+        </div>
+
         <div id="form-container">
             <h2 class="form-title">Get Early Access</h2>
             <p class="form-subtitle">Be the first to know about the launch and pre-order.</p>
@@ -355,6 +522,13 @@
     </div>
 
     <script>
+        function toggleStory() {
+            const content = document.getElementById('story-content');
+            const toggle = document.querySelector('.story-toggle');
+            content.classList.toggle('open');
+            toggle.classList.toggle('active');
+        }
+
         document.getElementById('signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
